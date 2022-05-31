@@ -1,0 +1,6 @@
+framework module Pods_URLSessionTask {
+  umbrella header "Pods-URLSessionTask-umbrella.h"
+
+  export *
+  module * { export * }
+}
