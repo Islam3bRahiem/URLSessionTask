@@ -34,28 +34,21 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
     //Inputs
     func viewDidLoad() {
         isLoading.onNext(true)
-        do {
-            try client.fetchData(model).subscribe { [weak self](response) in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.isLoading.onNext(false)
-                }
-                print("❤️ response : ", response)
-            } onError: { [weak self] error in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.isLoading.onNext(false)
-                    self.displayToastMessage.onNext(error.localizedDescription)
-                }
-            } onCompleted: {
-                print("Completed event.")
-            }.disposed(by: disposeBag)
-        } catch {
+        client.fetchData(model).subscribe { [weak self](response) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.isLoading.onNext(false)
             }
-            print("ERROR ...")
-        }
+            print("❤️ response : ", response)
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.isLoading.onNext(false)
+                self.displayToastMessage.onNext(error.localizedDescription)
+            }
+        } onCompleted: {
+            print("Completed event.")
+        }.disposed(by: disposeBag)
     }
     
 }

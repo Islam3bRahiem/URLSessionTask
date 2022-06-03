@@ -14,7 +14,7 @@ fileprivate extension Encodable {
   var dictionaryValue:[String: String?]? {
       guard let data = try? JSONEncoder().encode(self),
       let dictionary = try? JSONSerialization.jsonObject(with: data,
-        options: .allowFragments) as? [String: String] else {
+                                                         options: .allowFragments ) as? [String: String] else {
       return nil
     }
     return dictionary
@@ -26,7 +26,7 @@ class APIClient {
     static var shared = APIClient()
     lazy var requestObservable = RequestObservable()
     
-    func fetchData(_ model: GetPhotosModel) throws -> Observable<ResponseModel> {
+    func fetchData(_ model: GetPhotosModel) -> Observable<ResponseModel> {
         var components = URLComponents(string: NetworkConstants.baseUrl)!
         components.queryItems = model.dictionaryValue!.map { (key, value) in
             URLQueryItem(name: key, value: value)

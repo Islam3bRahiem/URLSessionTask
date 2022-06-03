@@ -157,10 +157,10 @@
 		8E8AD3E2284674D700FB0960 /* URLSessionTask */ = {
 			isa = PBXGroup;
 			children = (
-				8E8AD42E28468BD300FB0960 /* Extensions */,
 				8E8AD428284687AF00FB0960 /* Application */,
+				8E8AD42E28468BD300FB0960 /* Extensions */,
 				8E8AD42328467EB200FB0960 /* Network Layer */,
-				8E8AD4162846759F00FB0960 /* Home */,
+				8E955CD8284ACED20071533B /* Modules */,
 				8E8AD3E3284674D700FB0960 /* AppDelegate.swift */,
 				8E8AD3E5284674D700FB0960 /* SceneDelegate.swift */,
 				8E8AD3EF284674DA00FB0960 /* Assets.xcassets */,
@@ -244,7 +244,7 @@
 		8E8AD428284687AF00FB0960 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				8E8AD43328468F2800FB0960 /* Thems */,
+				8E8AD43328468F2800FB0960 /* Themes */,
 				8E8AD429284687B600FB0960 /* Core */,
 			);
 			path = Application;
@@ -266,12 +266,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8E8AD43328468F2800FB0960 /* Thems */ = {
+		8E8AD43328468F2800FB0960 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
 				8E8AD43428468F3000FB0960 /* ActivityIndicatorPresenter.swift */,
 			);
-			path = Thems;
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		8E955CD8284ACED20071533B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8E8AD4162846759F00FB0960 /* Home */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
