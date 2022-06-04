@@ -9,27 +9,16 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-//MARK: extension for converting out RecipeModel to jsonObject
-fileprivate extension Encodable {
-  var dictionaryValue:[String: String?]? {
-      guard let data = try? JSONEncoder().encode(self),
-      let dictionary = try? JSONSerialization.jsonObject(with: data,
-                                                         options: .allowFragments ) as? [String: String] else {
-      return nil
-    }
-    return dictionary
-  }
-}
 
 class APIClient {
     
     static var shared = APIClient()
     lazy var requestObservable = RequestObservable()
     
-    func fetchData(_ model: GetPhotosModel) -> Observable<ResponseModel> {
+    func fetchData(_ dic: [String:Any]) -> Observable<ResponseModel> {
         var components = URLComponents(string: NetworkConstants.baseUrl)!
-        components.queryItems = model.dictionaryValue!.map { (key, value) in
-            URLQueryItem(name: key, value: value)
+        components.queryItems = dic.compactMap { (key, value) in
+            URLQueryItem(name: key, value: "\(value)")
         }
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         var request = URLRequest(url: components.url!)
@@ -39,13 +28,19 @@ class APIClient {
         return requestObservable.callAPI(request: request)
     }
     
-    func postData(_ model: GetPhotosModel) -> Observable<ResponseModel> {
-        var request = URLRequest(url: URL(string: NetworkConstants.EndPoint.search.rawValue)!)
+    func postData(_ dic: [String:Any]) -> Observable<PostDataResponse> {
+        var request = URLRequest(url: URL(string: NetworkConstants.EndPoint.contactUs.url)!)
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = try? JSONSerialization.data(withJSONObject: model.dictionaryValue!, options: [])
-        request.httpBody = body
-        
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("ios", forHTTPHeaderField: "os")
+        request.addValue("Bearer 6293871a4bfaf72d293ae904|BpUzH5oX52KjHhcOQWUzOFKp4V6LxHc03LOpkDd8", forHTTPHeaderField: "Authorization")
+                
+        let body = (dic.compactMap({ (key, value) -> String in
+                    return "\(key)=\(value)"
+                    }) as Array).joined(separator: "&")
+        let bodyData = body.data(using: String.Encoding.utf8)
+        request.httpBody = bodyData
+
         return requestObservable.callAPI(request: request)
      }
 

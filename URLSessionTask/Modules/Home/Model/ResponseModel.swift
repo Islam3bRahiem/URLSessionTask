@@ -22,6 +22,7 @@ struct ResponseModel: Codable {
     var stat: String
     var code: Int?
     var message: String?
+    var errors: [ErrorModel]?
 }
 
 struct PhotosModel: Codable {
@@ -34,4 +35,20 @@ struct PhotoModel: Codable {
     var farm: Int
     var title: String
     var ispublic, isfriend, isfamily: Int
+}
+
+// MARK: - SuccessResponse
+struct PostDataResponse: Codable {
+    let data: SuccessData?
+    var errors: [ErrorModel]?
+}
+
+// MARK: - SuccessData
+struct SuccessData: Codable {
+    let success: Bool?
+}
+
+// MARK: - ErrorModel
+struct ErrorModel: Codable {
+    let key, value: String?
 }

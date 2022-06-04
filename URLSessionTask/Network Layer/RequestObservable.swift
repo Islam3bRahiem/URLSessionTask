@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class RequestObservable {
+public class RequestObservable {
     private lazy var jsonDecoder = JSONDecoder()
     private var urlSession: URLSession
     
@@ -26,8 +26,13 @@ class RequestObservable {
                         if statusCode == 200 {
                             let object = try self.jsonDecoder.decode(T.self, from: data ?? Data())
                             observable.onNext(object)
+                        } else if statusCode == 400 {
+                            let object = try self.jsonDecoder.decode(T.self, from: data ?? Data())
+                            observable.onNext(object)
                         } else {
-                            observable.onError(error!)
+                            if let error = error {
+                                observable.onError(error)
+                            }
                         }
                     } catch {
                         observable.onError(error)

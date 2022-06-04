@@ -28,6 +28,7 @@
 		8E8AD42D284687ED00FB0960 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD42C284687ED00FB0960 /* BaseController.swift */; };
 		8E8AD43228468C1A00FB0960 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD43128468C1A00FB0960 /* HomeViewModel.swift */; };
 		8E8AD43528468F3000FB0960 /* ActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD43428468F3000FB0960 /* ActivityIndicatorPresenter.swift */; };
+		8E955CDA284ADB340071533B /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E955CD9284ADB340071533B /* EncodableExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8E8AD42C284687ED00FB0960 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		8E8AD43128468C1A00FB0960 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E8AD43428468F3000FB0960 /* ActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorPresenter.swift; sourceTree = "<group>"; };
+		8E955CD9284ADB340071533B /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		D29A8FAF90F89C4476AACB4B /* Pods-URLSessionTask-URLSessionTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLSessionTask-URLSessionTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-URLSessionTask-URLSessionTaskUITests/Pods-URLSessionTask-URLSessionTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E21BA664FA41E92CA69A5613 /* Pods-URLSessionTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLSessionTaskTests.release.xcconfig"; path = "Target Support Files/Pods-URLSessionTaskTests/Pods-URLSessionTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		F8C5A6A47A435832A5F2AC4E /* Pods-URLSessionTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLSessionTask.release.xcconfig"; path = "Target Support Files/Pods-URLSessionTask/Pods-URLSessionTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		8E8AD42E28468BD300FB0960 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8E955CD9284ADB340071533B /* EncodableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				8E8AD42D284687ED00FB0960 /* BaseController.swift in Sources */,
 				8E8AD3EE284674D700FB0960 /* URLSessionTask.xcdatamodeld in Sources */,
 				8E8AD41E2846785E00FB0960 /* RequestObservable.swift in Sources */,
+				8E955CDA284ADB340071533B /* EncodableExtension.swift in Sources */,
 				8E8AD3E4284674D700FB0960 /* AppDelegate.swift in Sources */,
 				8E8AD42B284687D400FB0960 /* BaseViewModel.swift in Sources */,
 				8E8AD43528468F3000FB0960 /* ActivityIndicatorPresenter.swift in Sources */,
