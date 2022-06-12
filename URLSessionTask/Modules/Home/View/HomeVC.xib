@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="URLSessionTask" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="CCj-2f-zqG" id="to5-QU-tkA"/>
+                <outlet property="passwordTextField" destination="AY1-Vq-D1M" id="b7l-3u-pqq"/>
+                <outlet property="sendBtn" destination="gX6-C8-zuO" id="PT4-X5-Opo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +20,59 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wuq-KF-fBP">
+                    <rect key="frame" x="20" y="64" width="374" height="110"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCj-2f-zqG">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="ImU-dA-uR5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AY1-Vq-D1M">
+                            <rect key="frame" x="0.0" y="60" width="374" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Pnq-SH-GM0"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gX6-C8-zuO">
+                    <rect key="frame" x="20" y="214" width="374" height="50"/>
+                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="fD9-gN-3Ht"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="SEND">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGreenColor"/>
+            <constraints>
+                <constraint firstItem="gX6-C8-zuO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BmG-4x-3fT"/>
+                <constraint firstItem="gX6-C8-zuO" firstAttribute="top" secondItem="Wuq-KF-fBP" secondAttribute="bottom" constant="40" id="DGa-DV-jIz"/>
+                <constraint firstItem="Wuq-KF-fBP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="DM7-wS-owS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wuq-KF-fBP" secondAttribute="trailing" constant="20" id="GtH-MF-Rcc"/>
+                <constraint firstItem="Wuq-KF-fBP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Mai-UX-qQg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gX6-C8-zuO" secondAttribute="trailing" constant="20" id="dg5-TS-XMo"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="97"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

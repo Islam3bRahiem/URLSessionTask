@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol HomeViewModelInputs {
     func viewDidLoad()
@@ -14,7 +15,9 @@ protocol HomeViewModelInputs {
 }
 
 protocol HomeViewModelOutputs {
-    
+    var emailTextFieldBehavior: BehaviorRelay<String> { get }
+    var passwordTextFieldBehavior: BehaviorRelay<String> { get }
+    var isSendButtonEnable: Observable<Bool> { get }
 }
 
 class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
@@ -34,9 +37,28 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
                                   "subject": "Suggestion",
                                   "message": "New Suggestion"]
     
+    private var isEmptyEmail: Observable<Bool> {
+        return emailTextFieldBehavior.asObservable().map { (email) in
+            let isEmptyEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            return isEmptyEmail
+        }
+    }
+    private var isEmptyPassword: Observable<Bool> {
+        return passwordTextFieldBehavior.asObservable().map { (password) in
+            let isEmptyPassword = password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            return isEmptyPassword
+        }
+    }
     
     //Outputs
-    
+    var emailTextFieldBehavior: BehaviorRelay<String> = .init(value: "")
+    var passwordTextFieldBehavior: BehaviorRelay<String> = .init(value: "")
+    var isSendButtonEnable: Observable<Bool> {
+        return Observable.combineLatest(isEmptyEmail, isEmptyPassword) { (isEmptyEmail, isEmptyPassword) in
+            return !isEmptyEmail && !isEmptyPassword
+        }
+    }
+
     
     //Inputs
     func viewDidLoad() {
