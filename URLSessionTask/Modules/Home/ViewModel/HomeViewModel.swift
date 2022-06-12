@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol HomeViewModelInputs {
     func viewDidLoad()
@@ -41,18 +42,15 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
     func viewDidLoad() {
         isLoading.onNext(true)
         client.fetchData(getPhotosModel)
+            .observe(on: MainScheduler.instance)
             .subscribe { [weak self](response) in
                 guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.isLoading.onNext(false)
-                }
+                self.isLoading.onNext(false)
                 print("❤️ response : ", response)
             } onError: { [weak self] error in
                 guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.isLoading.onNext(false)
-                    self.displayToastMessage.onNext(error.localizedDescription)
-                }
+                self.isLoading.onNext(false)
+                self.displayToastMessage.onNext(error.localizedDescription)
             } onCompleted: {
                 print("Completed event.")
         }.disposed(by: disposeBag)
@@ -61,21 +59,18 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
     func contactUs() {
         isLoading.onNext(true)
         client.postData(contactUsModel)
+            .observe(on: MainScheduler.instance)
             .subscribe { [weak self](response) in
                 guard let self = self else { return }
                 print("❤️ response : ", response)
-                DispatchQueue.main.async {
                     self.isLoading.onNext(false)
                     if let errors = response.errors {
                         self.displayToastMessage.onNext(errors.first?.value ?? "")
                     }
-                }
             } onError: { [weak self] error in
                 guard let self = self else { return }
-                DispatchQueue.main.async {
                     self.isLoading.onNext(false)
                     self.displayToastMessage.onNext(error.localizedDescription)
-                }
             } onCompleted: {
                 print("Completed event.")
         }.disposed(by: disposeBag)
