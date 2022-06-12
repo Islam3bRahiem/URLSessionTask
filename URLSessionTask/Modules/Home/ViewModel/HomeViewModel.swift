@@ -18,18 +18,20 @@ protocol HomeViewModelOutputs {
     var emailTextFieldBehavior: BehaviorRelay<String> { get }
     var passwordTextFieldBehavior: BehaviorRelay<String> { get }
     var isSendButtonEnable: Observable<Bool> { get }
+    var photosObservable: Observable<[ImageCellViewModel]> { get }
 }
 
 class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
     
     //Properties
     private let client = APIClient.shared
+    private var photosBehavior: BehaviorRelay<[ImageCellViewModel]> = .init(value: [])
     private let getPhotosModel = ["method": NetworkConstants.EndPoint.search.url,
                                   "format": NetworkConstants.format,
                                   "nojsoncallback": "50",
                                   "text": "Color",
                                   "page": "1",
-                                  "per_page": "20",
+                                  "per_page": "50",
                                   "api_key":NetworkConstants.apiKey]
     
     private let contactUsModel = ["name": "Islam 3bRahiem",
@@ -50,6 +52,10 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
         }
     }
     
+    override init() {
+        self.photosObservable = photosBehavior.asObservable()
+    }
+    
     //Outputs
     var emailTextFieldBehavior: BehaviorRelay<String> = .init(value: "")
     var passwordTextFieldBehavior: BehaviorRelay<String> = .init(value: "")
@@ -58,6 +64,7 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
             return !isEmptyEmail && !isEmptyPassword
         }
     }
+    var photosObservable: Observable<[ImageCellViewModel]>
 
     
     //Inputs
@@ -69,6 +76,9 @@ class HomeViewModel: BaseViewModel, HomeViewModelInputs, HomeViewModelOutputs {
                 guard let self = self else { return }
                 self.isLoading.onNext(false)
                 print("❤️ response : ", response)
+                let photos = response.photos.photo
+                let photosVewModel = photos.map(ImageCellViewModel.init)
+                self.photosBehavior.accept(photosVewModel)
             } onError: { [weak self] error in
                 guard let self = self else { return }
                 self.isLoading.onNext(false)

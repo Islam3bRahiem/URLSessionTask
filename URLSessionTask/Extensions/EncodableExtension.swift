@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 //MARK: extension for converting out RecipeModel to jsonObject
 extension Encodable {
@@ -18,3 +20,4 @@ extension Encodable {
     return dictionary
   }
 }
+

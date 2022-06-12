@@ -10,6 +10,11 @@
 		0A2D0E2CF6227265E8511BF3 /* Pods_URLSessionTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8A55CFCB8ACA0808D7E6C6 /* Pods_URLSessionTaskTests.framework */; };
 		196A82B04AAF61CDDA15BCB5 /* Pods_URLSessionTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ED053E9DFD4386BE03907A /* Pods_URLSessionTask.framework */; };
 		7BD2A22E42DE949CD94AD106 /* Pods_URLSessionTask_URLSessionTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89EABBEBCCB6EED26DE553 /* Pods_URLSessionTask_URLSessionTaskUITests.framework */; };
+		8E864A7728562D61007BD4DE /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E864A7528562D61007BD4DE /* ImageCell.swift */; };
+		8E864A7828562D61007BD4DE /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E864A7628562D61007BD4DE /* ImageCell.xib */; };
+		8E864A7A28562D9F007BD4DE /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E864A7928562D9F007BD4DE /* UITableViewExtension.swift */; };
+		8E864A7C28562DAC007BD4DE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E864A7B28562DAC007BD4DE /* UIViewExtension.swift */; };
+		8E864A7E28562F99007BD4DE /* ImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E864A7D28562F99007BD4DE /* ImageCellViewModel.swift */; };
 		8E8AD3E4284674D700FB0960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD3E3284674D700FB0960 /* AppDelegate.swift */; };
 		8E8AD3E6284674D700FB0960 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD3E5284674D700FB0960 /* SceneDelegate.swift */; };
 		8E8AD3EE284674D700FB0960 /* URLSessionTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AD3EC284674D700FB0960 /* URLSessionTask.xcdatamodeld */; };
@@ -54,6 +59,11 @@
 		18ED053E9DFD4386BE03907A /* Pods_URLSessionTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_URLSessionTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3862EF1F52A5FD2C06D3F39C /* Pods-URLSessionTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLSessionTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-URLSessionTaskTests/Pods-URLSessionTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A8A55CFCB8ACA0808D7E6C6 /* Pods_URLSessionTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_URLSessionTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E864A7528562D61007BD4DE /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		8E864A7628562D61007BD4DE /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		8E864A7928562D9F007BD4DE /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		8E864A7B28562DAC007BD4DE /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		8E864A7D28562F99007BD4DE /* ImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellViewModel.swift; sourceTree = "<group>"; };
 		8E8AD3E0284674D700FB0960 /* URLSessionTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSessionTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8AD3E3284674D700FB0960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E8AD3E5284674D700FB0960 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +142,16 @@
 				7A8A55CFCB8ACA0808D7E6C6 /* Pods_URLSessionTaskTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E864A7428562D48007BD4DE /* Image Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8E864A7628562D61007BD4DE /* ImageCell.xib */,
+				8E864A7528562D61007BD4DE /* ImageCell.swift */,
+				8E864A7D28562F99007BD4DE /* ImageCellViewModel.swift */,
+			);
+			path = "Image Cell";
 			sourceTree = "<group>";
 		};
 		8E8AD3D7284674D700FB0960 = {
@@ -220,6 +240,7 @@
 		8E8AD4212846798900FB0960 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E864A7428562D48007BD4DE /* Image Cell */,
 				8E8AD418284675AF00FB0960 /* HomeVC.xib */,
 				8E8AD417284675AF00FB0960 /* HomeVC.swift */,
 			);
@@ -265,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				8E955CD9284ADB340071533B /* EncodableExtension.swift */,
+				8E864A7B28562DAC007BD4DE /* UIViewExtension.swift */,
+				8E864A7928562D9F007BD4DE /* UITableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E8AD3F3284674DA00FB0960 /* LaunchScreen.storyboard in Resources */,
+				8E864A7828562D61007BD4DE /* ImageCell.xib in Resources */,
 				8E8AD41A284675AF00FB0960 /* HomeVC.xib in Resources */,
 				8E8AD3F0284674DA00FB0960 /* Assets.xcassets in Resources */,
 			);
@@ -529,6 +553,10 @@
 				8E8AD42D284687ED00FB0960 /* BaseController.swift in Sources */,
 				8E8AD3EE284674D700FB0960 /* URLSessionTask.xcdatamodeld in Sources */,
 				8E8AD41E2846785E00FB0960 /* RequestObservable.swift in Sources */,
+				8E864A7728562D61007BD4DE /* ImageCell.swift in Sources */,
+				8E864A7E28562F99007BD4DE /* ImageCellViewModel.swift in Sources */,
+				8E864A7C28562DAC007BD4DE /* UIViewExtension.swift in Sources */,
+				8E864A7A28562D9F007BD4DE /* UITableViewExtension.swift in Sources */,
 				8E955CDA284ADB340071533B /* EncodableExtension.swift in Sources */,
 				8E8AD3E4284674D700FB0960 /* AppDelegate.swift in Sources */,
 				8E8AD42B284687D400FB0960 /* BaseViewModel.swift in Sources */,

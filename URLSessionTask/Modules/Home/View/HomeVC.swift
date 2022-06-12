@@ -14,10 +14,12 @@ class HomeVC: BaseController<HomeViewModel> {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
+        configureTableView()
     }
 
     override func bind(viewModel: HomeViewModel) {
@@ -43,9 +45,29 @@ class HomeVC: BaseController<HomeViewModel> {
             .subscribe { [weak self] _ in
                 guard let self = self else{ return }
                 //Handle action here...
-                print("Handle Send button action here...")
+                print("Handle action here...")
+                self.tableView.reloadData()
         }.disposed(by: disposeBag)
     }
+    
+    private func configureTableView() {
+        tableView.separatorStyle = .none
+        tableView.register(nibWithClass: ImageCell.self)
 
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        viewModel.photosObservable
+            .bind(to: tableView.rx.items(cellIdentifier: String(describing: ImageCell.self),
+                                         cellType: ImageCell.self)) { (index, model, cell) in
+                cell.bind(model)
+            }.disposed(by: disposeBag)
+    }
 
+}
+
+extension HomeVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
 }
